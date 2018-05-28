@@ -1,44 +1,42 @@
 package paneles;
 
+import java.awt.*;
+import javax.swing.*;
+public class OvalPanel extends JPanel {
+ Color color;
+ public OvalPanel() {
+ this(Color.black);
+ }
+ public OvalPanel(Color color) {
+ this.color = color;
+ }
+ public void paintComponent(Graphics g) {
+ int width = getWidth();
+ int height = getHeight();
+ g.setColor(color);
+ g.drawOval(0, 0, width, height);
+ }
+ public static void main(String args[]) {
+ Runnable runner = new Runnable() {
+ public void run() {
+ JFrame frame = new JFrame("Oval Sample");
+ frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+ frame.setLayout(new GridLayout(2, 2));
+ Color colors[] = {Color.RED, Color.BLUE, Color.GREEN, Color.YELLOW};
+ for (int i=0; i<4; i++) {
+ OvalPanel panel = new OvalPanel(colors[i]);
+ frame.add(panel);
+ }
+ frame.setSize(300, 200);
+ frame.setVisible(true);
+ }
+ };
+ EventQueue.invokeLater(runner);
+ }
 
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
+ 
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-/**
- *
- * @author espec
- */
-public class PanelJBT extends javax.swing.JPanel {
-
-    /**
-     * Creates new form panel1
-     */
-    public PanelJBT() {
-        initComponents();
-        miCuadrado jp = new miCuadrado();
-        this.add(jp);
-
-    }
-
-    public class miCuadrado extends javax.swing.JPanel {
-
-        @Override
-        public void paintComponent(Graphics g) {
-            Graphics2D g2d = (Graphics2D) g;
-
-            g.setColor(Color.RED);
-            g.drawRect(20, 10, 100, 100);
-            super.paintComponent(g);
-
-        }
-
-    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.

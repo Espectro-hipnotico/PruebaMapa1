@@ -1,19 +1,23 @@
 package mapa;
 
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.GridBagLayout;
 import java.awt.Toolkit;
 import javax.swing.JPanel;
-import paneles.PanelJBT;
+import paneles.*;
 
 public class Main extends javax.swing.JFrame {
 
     Dimension fullScreen = Toolkit.getDefaultToolkit().getScreenSize();
-    PanelJBT jp = new PanelJBT();
+    OvalPanel jp = new OvalPanel();
+
+    GridBagLayout layout = new GridBagLayout();
 
     public Main() {
         initComponents();
-
-        this.getContentPane().add(jp);
+        jPanel1.setLayout(layout);
+        jPanel1.add(jp);
 
 //        this.setSize(fullScreen);
 //
@@ -110,9 +114,9 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel1MouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-jp.setSize(500, 500);
-
-jp.setVisible(true);
+        jp.setSize(500, 500);
+        jp.setBackground(Color.yellow);
+        jp.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

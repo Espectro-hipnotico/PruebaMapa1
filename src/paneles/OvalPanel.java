@@ -2,41 +2,55 @@ package paneles;
 
 import java.awt.*;
 import javax.swing.*;
+
 public class OvalPanel extends JPanel {
- Color color;
- public OvalPanel() {
- this(Color.black);
- }
- public OvalPanel(Color color) {
- this.color = color;
- }
- public void paintComponent(Graphics g) {
- int width = getWidth();
- int height = getHeight();
- g.setColor(color);
- g.drawOval(0, 0, width, height);
- }
- public static void main(String args[]) {
- Runnable runner = new Runnable() {
- public void run() {
- JFrame frame = new JFrame("Oval Sample");
- frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
- frame.setLayout(new GridLayout(2, 2));
- Color colors[] = {Color.RED, Color.BLUE, Color.GREEN, Color.YELLOW};
- for (int i=0; i<4; i++) {
- OvalPanel panel = new OvalPanel(colors[i]);
- frame.add(panel);
- }
- frame.setSize(300, 200);
- frame.setVisible(true);
- }
- };
- EventQueue.invokeLater(runner);
- }
 
- 
-
+    @Override
+    public void paintComponent(Graphics g) {
+        Graphics2D g2 = (Graphics2D) g;
+        Boolean salir = false;
+        int tamañoPantallaX=this.getWidth();
+        int width = 33;
+        int height = 33;
+        int posicionx = 0;
+        int posiciony = 0;
+        System.out.println("hola"+tamañoPantallaX);
+//        for (int i = 0; salir == true; i++) {
+//            ;
+//            if (posicionx <= this.getWidth()) {
+//                System.out.println(posicionx);
+//                posicionx+=33;
+//                g.drawRect(posicionx, posiciony, width, height);
+//                g.setColor(Color.red);
+//            }else{
+//                salir=false;
+//            }
+//        }
+g.drawRect(posicionx, posiciony, width, height);
+                g.setColor(Color.red);
+    }
     
+// public void paintComponent(Graphics g) {
+// int width = getWidth();
+// int height = getHeight();
+// g.setColor(Color.red);
+// g.drawRect(0, 0, width, height);
+// }
+    public static void main(String args[]) {
+        Runnable runner = () -> {
+//            JFrame frame = new JFrame("Oval Sample");
+//            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//            frame.setLayout(new GridLayout(2, 2));
+            
+//            for (int i = 0; i < 4; i++) {
+//                
+//// frame.add(panel);
+//            }
+//            frame.setSize(300, 200);
+//            frame.setVisible(true);
+        };
+        EventQueue.invokeLater(runner);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.

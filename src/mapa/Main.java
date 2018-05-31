@@ -32,10 +32,10 @@ public class Main extends javax.swing.JFrame {
         jLabel1.setSize(jPanel1.getSize());
         jLabel1.setPreferredSize(jPanel1.getSize());
 
-        ImageIcon mapa = new ImageIcon("images/mapa1.jpg");
-        ImageIcon icono = new ImageIcon(mapa.getImage().getScaledInstance(this.getWidth(), this.getHeight(), Image.SCALE_SMOOTH));
-        jLabel1.setIcon(icono);
-        jLabel1.setBounds(location);
+//        ImageIcon mapa = new ImageIcon("images/mapa1.jpg");
+//        ImageIcon icono = new ImageIcon(mapa.getImage().getScaledInstance(this.getWidth(), this.getHeight(), Image.SCALE_SMOOTH));
+//        jLabel1.setIcon(icono);
+//        jLabel1.setBounds(location);
 
     }
 
@@ -108,9 +108,9 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel1MouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        jp.setSize(fullScreen);
+        //jp.setSize(fullScreen);
         jp.setBounds(0, 0, fullScreen.width, fullScreen.height);
-        jp.setBackground(Color.yellow);
+//        jp.setBackground(Color.yellow);
         jp.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 

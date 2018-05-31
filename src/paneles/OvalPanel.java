@@ -1,6 +1,18 @@
 package paneles;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.*;
 
 public class OvalPanel extends JPanel {
@@ -8,28 +20,87 @@ public class OvalPanel extends JPanel {
     @Override
     public void paintComponent(Graphics g) {
         Graphics2D g2 = (Graphics2D) g;
-        Boolean salir = false;
-        int tamañoPantallaX=this.getWidth();
-        int width = 33;
-        int height = 33;
-        int posicionx = 0;
-        int posiciony = 0;
-        System.out.println("hola"+tamañoPantallaX);
-//        for (int i = 0; salir == true; i++) {
-//            ;
-//            if (posicionx <= this.getWidth()) {
-//                System.out.println(posicionx);
-//                posicionx+=33;
+
+        int tamañoPantallaX = 1600; // 1600 (50 * 32px)
+        int tamañoPantallay = 704; // 704 (22 * 32px)
+        int width = 32;
+        int height = 32;
+        int posicionx = 160;//160
+        int posiciony = 188;//188
+        System.out.println("hola" + tamañoPantallaX + "adios" + tamañoPantallay);
+        int contary = 0;
+        int contarx = 0;
+
+        ArrayList<Casilla> lista = new ArrayList();
+        Scanner scM;
+        try {
+            String[] cadena;
+
+            scM = new Scanner(new File("mapa1.txt"));
+            while (scM.hasNextLine()) {
+                cadena = scM.nextLine().split("");
+                for (String cadena1 : cadena) {
+                    lista.add(new Casilla(cadena1));
+                }
+
+            }
+
+            scM.close();
+
+//            b.close();
+        } catch (IOException ex) {
+            Logger.getLogger(OvalPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        Iterator<Casilla> it = lista.iterator();
+        while (it.hasNext()) {
+            try {
+                Casilla e=it.next();
+                BufferedImage img = ImageIO.read(new File("images/2.png")).getSubimage(e.getTipo()[0], e.getTipo()[1], width, height);
+                if (posicionx >= tamañoPantallaX+160) {
+                    System.out.println("num vueltas X " + contarx + "num vueltas y " + contary);
+                    posicionx = 160;
+                    posiciony += 32;
+                    contary += 1;
+                }
+
+                g.drawRect(posicionx, posiciony, width, height);
+                //Dibuja Casilla
+                g.drawImage(img, posicionx, posiciony, this);
+
+                posicionx += 32;
+                contarx += 1;
+                
+            } catch (IOException ex) {
+                Logger.getLogger(OvalPanel.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        }
+
+//        try {
+//           BufferedImage img = ImageIO.read(new File("images/2.png")).getSubimage(256, 32, 32, 32);
+//            do {
+//                if (posicionx > tamañoPantallaX) {
+//                    posicionx = 0;
+//                    posiciony += 32;
+//                    contar += 1;
+//                }
+//
 //                g.drawRect(posicionx, posiciony, width, height);
-//                g.setColor(Color.red);
-//            }else{
-//                salir=false;
-//            }
+//                //Dibuja Casilla
+//                g.drawImage(img, posicionx, posiciony, null);
+//
+//                posicionx += 32;
+//
+//            } while (posiciony <= tamañoPantallay);
+//
+//        } catch (IOException ex) {
+//            Logger.getLogger(OvalPanel.class.getName()).log(Level.SEVERE, null, ex);
 //        }
-g.drawRect(posicionx, posiciony, width, height);
-                g.setColor(Color.red);
+        
+//Image imagenInterna = new ImageIcon(getClass().getResource("/images/1.png")).getImage();
     }
-    
+
 // public void paintComponent(Graphics g) {
 // int width = getWidth();
 // int height = getHeight();
@@ -41,7 +112,7 @@ g.drawRect(posicionx, posiciony, width, height);
 //            JFrame frame = new JFrame("Oval Sample");
 //            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 //            frame.setLayout(new GridLayout(2, 2));
-            
+
 //            for (int i = 0; i < 4; i++) {
 //                
 //// frame.add(panel);

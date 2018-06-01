@@ -55,29 +55,27 @@ public class OvalPanel extends JPanel {
         } catch (IOException ex) {
             Logger.getLogger(OvalPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+BufferedImage imagen=null;
+        try {
+        imagen = ImageIO.read(new File("images/2.png"));
+        } catch (IOException ex) {
+            Logger.getLogger(OvalPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
         Iterator<Casilla> it = lista.iterator();
         while (it.hasNext()) {
-            try {
-                Casilla e=it.next();
-                BufferedImage img = ImageIO.read(new File("images/2.png")).getSubimage(e.getTipo()[0], e.getTipo()[1], width, height);
-                if (posicionx >= tamañoPantallaX+160) {
-                    System.out.println("num vueltas X " + contarx + "num vueltas y " + contary);
-                    posicionx = 160;
-                    posiciony += 32;
-                    contary += 1;
-                }
-
-                g.drawRect(posicionx, posiciony, width, height);
-                //Dibuja Casilla
-                g.drawImage(img, posicionx, posiciony, this);
-
-                posicionx += 32;
-                contarx += 1;
-                
-            } catch (IOException ex) {
-                Logger.getLogger(OvalPanel.class.getName()).log(Level.SEVERE, null, ex);
+            Casilla e=it.next();
+            BufferedImage img = imagen.getSubimage(e.getTipo()[0], e.getTipo()[1], width, height);
+            if (posicionx >= tamañoPantallaX+160) {
+                System.out.println("num vueltas X " + contarx + "num vueltas y " + contary);
+                posicionx = 160;
+                posiciony += 32;
+                contary += 1;
             }
+            g.drawRect(posicionx, posiciony, width, height);
+            //Dibuja Casilla
+            g.drawImage(img, posicionx, posiciony, this);
+            posicionx += 32;
+            contarx += 1;
 
         }
 

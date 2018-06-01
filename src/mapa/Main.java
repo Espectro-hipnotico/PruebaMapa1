@@ -1,13 +1,9 @@
 package mapa;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagLayout;
-import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
-import javax.swing.ImageIcon;
-import javax.swing.JPanel;
 import paneles.*;
 
 public class Main extends javax.swing.JFrame {
@@ -20,7 +16,8 @@ public class Main extends javax.swing.JFrame {
 
     public Main() {
         initComponents();
-
+        jPanel1.setVisible(true);
+        
         jPanel1.setLayout(layout);
         jPanel1.add(jp);
 
@@ -97,6 +94,14 @@ public class Main extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+          
+    //    jp.setSize(fullScreen);
+        jp.setBounds(0, 0, fullScreen.width, fullScreen.height);
+//        jp.setBackground(Color.yellow);
+        jp.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
 
         System.out.println(evt.getPoint());
@@ -104,15 +109,7 @@ public class Main extends javax.swing.JFrame {
         System.out.println(evt.getXOnScreen());
         System.out.println(evt.getY());
         System.out.println(evt.getYOnScreen());
-
     }//GEN-LAST:event_jLabel1MouseClicked
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        //jp.setSize(fullScreen);
-        jp.setBounds(0, 0, fullScreen.width, fullScreen.height);
-//        jp.setBackground(Color.yellow);
-        jp.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

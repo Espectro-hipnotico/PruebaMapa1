@@ -20,14 +20,14 @@ public class OvalPanel extends JPanel {
     @Override
     public void paintComponent(Graphics g) {
         Graphics2D g2 = (Graphics2D) g;
-
-        int tamañoPantallaX = 1600; // 1600 (50 * 32px)
-        int tamañoPantallay = 704; // 704 (22 * 32px)
+        // Los tamaños de los pixeles quedan en 32px
+        int tamañoPantallaX = 1600; // 1600 (50 * 32px) //1650 (50 * 33px)
+        int tamañoPantallay = 704; // 704 (22 * 32px)// 704 (22 * 33px)
         int width = 32;
         int height = 32;
-        int posicionx = 160;//160
-        int posiciony = 188;//188
-        System.out.println("hola" + tamañoPantallaX + "adios" + tamañoPantallay);
+        int posicionx = 160;//160 (32px)//135 (33px)
+        int posiciony = 188;//188 (32px)//177 (33px)
+      //  System.out.println("hola" + tamañoPantallaX + "adios" + tamañoPantallay);
         int contary = 0;
         int contarx = 0;
 
@@ -37,10 +37,14 @@ public class OvalPanel extends JPanel {
             String[] cadena;
 
             scM = new Scanner(new File("mapa1.txt"));
-            while (scM.hasNextLine()) {
-                cadena = scM.nextLine().split("");
-                for (String cadena1 : cadena) {
-                    lista.add(new Casilla(cadena1));
+            while (scM.hasNext()) {
+//                String hola=scM.nextLine();
+                cadena = scM.nextLine().split("\\|");
+//                System.out.println(hola);
+                
+                for (int i=0; i<cadena.length;i++) {
+                    
+                    lista.add(new Casilla(cadena[i]));
                 }
 
             }
